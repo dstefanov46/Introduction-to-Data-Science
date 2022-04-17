@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+
+  database:
+    image: database
+    build: ./database
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: BeReSeMi.DataScience
+    ports:
+      - 3306:3306
+    volumes:
+      - ds_databases:/var/lib/mysql
+    networks:
+      - dsnet
+
+  application:
+    image: application
+    build: ./application    
+    depends_on:
+      - database
+    restart: always
+    ports:
+      - "8787:8787"
+    networks:
+      - dsnet
+
+networks:
+  dsnet:
+    driver: bridge
+
+volumes:
+  ds_databases: 

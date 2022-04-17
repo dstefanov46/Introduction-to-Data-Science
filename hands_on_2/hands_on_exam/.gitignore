@@ -1,0 +1,7 @@
+.DS_Store
+Icon
+notebooks/.ipynb_checkpoints
+notebooks/.ipython
+notebooks/.jupyter
+notebooks/.local
+notebooks/.cache
